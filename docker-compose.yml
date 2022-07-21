@@ -1,0 +1,58 @@
+version: "3.9"
+
+services:
+  nodejs:
+    container_name: react
+    build:
+      context: ./app-frontend
+    ports: 
+      - 4000:4000
+    volumes:
+      - ./app-frontend/:/var/www/app-front
+    networks:
+      - app-network
+
+  nginx:
+    container_name: nginx
+    restart: always
+    build:
+      context: app-backend/.docker/
+      dockerfile: nginx.dockerfile
+    ports:
+      - 8080:80
+    volumes:
+      - ./app-backend/:/var/www/app-back
+    networks:
+      - app-network
+    depends_on:
+      - fpm
+  fpm:
+    container_name: fpm
+    restart: always
+    build:
+      context: app-backend/.docker/
+      dockerfile: fpm.dockerfile
+    volumes:
+      - ./app-backend/:/var/www/app-back
+    networks:
+      - app-network
+    depends_on:
+      - mysql
+  mysql:
+    container_name: mysql
+    restart: always
+    image: mysql:8.0
+    volumes:
+      - dbdata:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: laravel
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+    dbdata:

@@ -1,0 +1,82 @@
+@import "colors";
+
+div.MuiTextField-root {
+  & label {
+    color: $font-main;
+    margin-left: 4px;
+
+    &.Mui-focused {
+      color: $turquoise-green80;
+    }
+  }
+  .MuiOutlinedInput-root {
+    & fieldset {
+      border-color: $turquoise-green80;
+    }
+    &:hover fieldset {
+      border-color: rgba(0, 0, 0, 0.3);
+    }
+    &.Mui-focused fieldset {
+      border-color: $turquoise-green80;
+    }
+  }
+}
+
+div.MuiDialog-paper {
+  & .MuiDialogContent-root {
+    background-color: $green-tea20;
+  }
+}
+
+button.MuiButton-root {
+  &.MuiButton-contained {
+    color: $turquoise-green100;
+    background-color: $grandma-apples80;
+    letter-spacing: 1.2px;
+    padding: 7px 25px;
+    border-radius: 0;
+
+    &:hover {
+      background-color: $grandma-apples60;
+    }
+  }
+}
+
+span.MuiCheckbox-root {
+  border-radius: 5px;
+
+  & svg {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+h1.MuiTypography-h1 {
+  font-family: "Yanone Kaffeesatz", sans-serif;
+  font-size: 30px;
+  font-weight: 400;
+  letter-spacing: 1.5px;
+}
+
+header.MuiAppBar-root {
+  background: $green-tea100;
+  color: $turquoise-green100;
+  box-shadow: 0 2px 10px $turquoise-green40;
+}
+
+button.MuiFab-root,
+a.MuiFab-root {
+  &.MuiFab-primary {
+    background-color: $turquoise-green40;
+    box-shadow: none;
+  }
+}
+
+div.MuiCard-root {
+  box-shadow: 2px 2px 5px rgb(184, 184, 184);
+  padding: 25px 40px;
+  border-radius: 0;
+  font-size: 20px;
+  background-color: white;
+  transition: 300ms !important;
+}

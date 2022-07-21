@@ -1,0 +1,30 @@
+@import "./styles/colors";
+@import "./styles/fonts";
+@import "./styles/light-theme";
+
+html,
+body {
+  margin: 0;
+  font-family: "Yanone Kaffeesatz", sans-serif !important;
+  font-weight: 300 !important;
+  color: $font-main;
+}
+
+button,
+label,
+input,
+textarea,
+a,
+p {
+  font-family: "Yanone Kaffeesatz", sans-serif !important;
+  letter-spacing: 0.5px;
+  color: $font-main;
+  font-size: 20px !important;
+}
+
+input,
+label,
+textarea,
+p {
+  font-weight: 300 !important;
+}
