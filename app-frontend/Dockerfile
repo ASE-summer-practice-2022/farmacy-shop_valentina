@@ -1,5 +1,5 @@
-FROM node:14.20.0-alpine
+FROM node:18.6.0-alpine
 WORKDIR /var/www/app-front
 COPY . .
 RUN npm install
-ENTRYPOINT npm run dev
+ENTRYPOINT npm rebuild esbuild && npm run dev
