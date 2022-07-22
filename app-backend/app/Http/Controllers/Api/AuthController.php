@@ -16,8 +16,10 @@ class AuthController extends Controller
     {
         $creds = $req->all();
         $creds['password'] = Hash::make($creds['password']);
-
-        return User::create($creds);
+        $user = User::create($creds);
+        Auth::login($user);
+        
+        return $user;
     }
 
     public function login(AuthRequest $req)

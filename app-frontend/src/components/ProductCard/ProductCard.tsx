@@ -14,11 +14,17 @@ interface ProductCardProps {
 
 function ProductCard({ id, name, description, price }: ProductCardProps) {
   const navigate = useNavigate();
-  const { productStore, userStore } = useStore();
+  const { productStore, userStore, cartStore } = useStore();
 
   const navCard = () => {
     productStore.setCurrentProduct(id);
     navigate(`/product/${id}`);
+  };
+
+  const addToCart = () => {
+    const quantity = 1;
+    const amount = productStore.currentProduct.price * quantity;
+    cartStore.createCartItem({ productId: Number(id), quantity, amount });
   };
 
   return (
@@ -34,7 +40,7 @@ function ProductCard({ id, name, description, price }: ProductCardProps) {
           </Typography>
           <Stack direction="row" gap={2}>
             {userStore.isAuthorized && (
-              <Button variant="contained" onClick={navCard}>
+              <Button variant="contained" onClick={addToCart}>
                 В корзину
               </Button>
             )}

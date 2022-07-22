@@ -31,8 +31,8 @@ class UserStore {
 
   logout = async () => {
     await http.post("/api/logout");
-    localStorage.clear();
     this.isAuthorized = false;
+    localStorage.clear();
   };
 }
 
